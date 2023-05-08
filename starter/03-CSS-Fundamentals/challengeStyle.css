@@ -1,6 +1,12 @@
 * {
   font-family: sans-serif;
+  /* border: 3px solid black; */
 }
+
+.body-class {
+  border: 3px solid black;
+}
+
 .header-class {
   background-color: #f7f7f7;
   text-transform: uppercase;
