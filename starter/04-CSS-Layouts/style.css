@@ -2,6 +2,7 @@
   /* border-top: 10px solid #1098ad; */
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 /* PAGE SECTIONS */
@@ -14,7 +15,7 @@ body {
 }
 
 .container {
-  width: 800px;
+  width: 1200px;
   /* margin-left: auto;
   margin-right: auto; */
   margin: 0 auto;
@@ -48,10 +49,7 @@ aside {
   background-color: #f7f7f7;
   border-top: 5px solid #1098ad;
   border-bottom: 5px solid #1098ad;
-  /* padding-top: 50px;
-  padding-bottom: 50px; */
-  padding: 50px 0;
-  width: 500px;
+  padding: 50px 40px;
 }
 
 /* SMALLER ELEMENTS */
@@ -82,6 +80,7 @@ h4 {
   font-size: 20px;
   text-transform: uppercase;
   text-align: center;
+  margin-bottom: 30px;
 }
 
 p {
@@ -134,6 +133,7 @@ li:last-child {
 
 .related {
   list-style: none;
+  margin-left: 0;
 }
 
 body {
@@ -232,7 +232,7 @@ h2 {
 }
 
 h2::before {
-  content: "TOP";
+  content: 'TOP';
   background-color: #ffe70e;
   color: #444;
   font-size: 16px;
@@ -265,3 +265,51 @@ footer p {
 nav p {
   font-size: 18px;
 } */
+
+/* FLOATS */
+.author-img {
+  float: left;
+  margin-bottom: 20px;
+}
+
+.author {
+  float: left;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+h1 {
+  float: left;
+}
+
+nav {
+  float: right;
+}
+
+/* float layouts have a problem - it does breaks its general flow of layout relatively, but its surrounding elements does not maintain their respective height element that they'd with the floated element before. For undoing that mistake after using float property, we'd have a introduce an empty div in the element that contains the floating element, then add a clear property with left/right/both value to clear the side-effect of the float property. That was very uneffective, and so it was over-rided by new techniques like flexbox and css grid. */
+
+/* .clear {
+  clear: both;
+} */
+
+/* a quickfix solution for this problem that was widely used back in days was this clear-flx pseudo element class - it's content is set to nothing, it clears both float, and the clear float would work only on block elements, however, this pseudo element is by default an inline element, so we've added a display block property too. Now - the only thing everytime we'd have to do for clearing floats is to add this clearfix class to the parent element of float whose height has been colapsed. */
+
+.clearfix::after {
+  content: '';
+  clear: both;
+  display: block;
+}
+
+article {
+  width: 825px;
+  float: left;
+}
+
+aside {
+  width: 300px;
+  float: right;
+}
+
+footer {
+  clear: both;
+}
